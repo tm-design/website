@@ -1,21 +1,49 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "@/components/HelloWorld.vue";
-import { computed } from "@vue/reactivity";
+import { computed, ref } from "@vue/reactivity";
+import { onMounted } from "vue";
+import * as youtube from "videojs-youtube";
+import videojs, { type VideoJsPlayerOptions } from "video.js";
 
+var yt = youtube;
+var videoPlayer = ref<Element>();
 var videoID = "YqVjA-6FV4w";
 videoID = "cAaW6kNWHV8";
 videoID = "S0qHfBs2ASE";
 const video = computed(
   () =>
-    `https://www.youtube-nocookie.com/embed/${videoID}?controls=0&autoplay=1&mute=1&playlist=${videoID}&loop=1&playsinline=1`
+    `https://www.youtube.com/embed/${videoID}?version=3&enablejsapi=1&htm5=1&wmode=opaque&showinfo=0&rel=0&modestbranding=0&controls=0&autoplay=1&mute=1&playlist=${videoID}&loop=1&origin=https://timmudd.dev;&playsinline=1`
 );
+
+onMounted(() => {
+  if (videoPlayer != undefined) {
+    var options: VideoJsPlayerOptions = {
+      autoplay: true,
+      controls: false,
+      loop: true,
+      muted: true,
+      preload: "auto",
+      techOrder: ["youtube"],
+      width: 1920,
+      height: 1080,
+      sources: [
+        {
+          src: `https://www.youtube.com/watch?v=${videoID}`,
+          type: "video/youtube",
+        },
+      ],
+    };
+    var player = videojs(videoPlayer.value as Element, options);
+  }
+});
 </script>
 
 <template>
   <Teleport to="body">
     <div id="video-background">
-      <iframe
+      <video ref="videoPlayer" class="video-js vjs-fluid"></video>
+      <!-- <iframe
         width="560"
         height="315"
         :src="video"
@@ -23,7 +51,7 @@ const video = computed(
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
-      ></iframe>
+      ></iframe> -->
     </div>
   </Teleport>
   <header>
@@ -61,14 +89,19 @@ const video = computed(
   overflow: hidden
   filter: blur(10px) hue-rotate(35deg)
   opacity: .5
-  iframe
-    position: absolute
-    top: 0%
-    left: 0%
-    width: 100vw
-    height: 100vh
-    pointer-events: none
-    z-index: -1
+  z-index: -1
+  pointer-events: none
+  div
+    height: 100%
+    width: 100%
+    margin: 0
+    padding: 0
+    iframe
+      position: absolute
+      top: 0%
+      left: 0%
+      width: 100vw
+      height: 100vh
 
 @media (min-aspect-ratio: 16/9)
   #video-background
