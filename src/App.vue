@@ -8,7 +8,7 @@ videoID = "cAaW6kNWHV8";
 videoID = "S0qHfBs2ASE";
 const video = computed(
   () =>
-    `https://www.youtube-nocookie.com/embed/${videoID}?controls=0&autoplay=1&mute=1&playlist=${videoID}&loop=1`
+    `https://www.youtube-nocookie.com/embed/${videoID}?controls=0&autoplay=1&mute=1&playlist=${videoID}&loop=1&playsinline=1`
 );
 </script>
 
