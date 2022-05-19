@@ -17,32 +17,32 @@ const video = computed(
 );
 
 onMounted(() => {
-  if (videoPlayer != undefined) {
-    var options: VideoJsPlayerOptions = {
-      autoplay: true,
-      controls: false,
-      loop: true,
-      muted: true,
-      preload: "auto",
-      techOrder: ["youtube"],
-      width: 1920,
-      height: 1080,
-      sources: [
-        {
-          src: `https://www.youtube.com/watch?v=${videoID}`,
-          type: "video/youtube",
-        },
-      ],
-    };
-    var player = videojs(videoPlayer.value as Element, options);
-  }
+  // if (videoPlayer != undefined) {
+  //   var options: VideoJsPlayerOptions = {
+  //     autoplay: true,
+  //     controls: false,
+  //     loop: true,
+  //     muted: true,
+  //     preload: "auto",
+  //     techOrder: ["youtube"],
+  //     width: 1920,
+  //     height: 1080,
+  //     sources: [
+  //       {
+  //         src: `https://www.youtube.com/watch?v=${videoID}`,
+  //         type: "video/youtube",
+  //       },
+  //     ],
+  //   };
+  //   var player = videojs(videoPlayer.value as Element, options);
+  // }
 });
 </script>
 
 <template>
   <Teleport to="body">
     <div id="video-background">
-      <video ref="videoPlayer" class="video-js vjs-fluid"></video>
+      <!-- <video ref="videoPlayer" class="video-js vjs-fluid"></video> -->
       <!-- <iframe
         width="560"
         height="315"
