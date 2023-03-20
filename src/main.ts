@@ -4,8 +4,6 @@ import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
 
-import "video.js/dist/video-js.css";
-
 const app = createApp(App);
 
 app.use(createPinia());
