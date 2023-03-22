@@ -6,7 +6,16 @@ import AnimatedBackground from "./components/AnimatedBackground.vue";
 <template>
   <header>
     <div class="wrapper">
-      <div id="title">Tim Mudd</div>
+      <div id="title">Tim Mudd
+        <div class="socials">
+          <a class="no-hover" href="https://github.com/tm-design">
+            <img class="social-link" src="@/assets/github-mark-white.png" alt="Github Logo">
+          </a>
+          <a class="no-hover" href="https://www.linkedin.com/in/tim-mudd/">
+            <img class="social-link" src="@/assets/LI-In-Bug.png" alt="LinkedIn Logo">
+          </a>
+        </div>
+      </div>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">Experience</RouterLink>
@@ -60,6 +69,7 @@ header
     @extend %title-font
     font-size: 120px
     line-height: 100px
+    display: flex
 
 .logo
   display: block
@@ -71,15 +81,28 @@ a,
   color: hsla(160, 100%, 37%, 1)
   transition: 0.4s
 
+.socials
+  display: flex
+  margin-left: 30px
+  .social-link 
+    max-height: 27px
+    margin-right: 15px
+    filter: saturate(0) contrast(0)  brightness(2.2)
+      
+  
+
 @media (hover: hover)
-  a:hover
+  a:hover:not(.no-hover)
     background-color: hsla(160, 100%, 37%, 0.2)
 
 nav
   width: 100%
-  font-size: 12px
+  font-size: 1.5rem
   text-align: center
   margin-top: 2rem
+  margin-bottom: 2rem
+  display: flex
+  // justify-content: space-between
 
 nav a.router-link-exact-active
   color: var(--color-text)
@@ -121,7 +144,7 @@ nav a:first-of-type
   nav
     text-align: left
     margin-left: -0.9rem
-    font-size: 1rem
+    font-size: 1.5rem
     padding: 1rem 0
     margin-top: 1rem
 </style>
