@@ -86,28 +86,16 @@ function submit() {
       email: state.value.email,
       message: state.value.message,
     };
-    console.log(obj);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(JSON.stringify(obj)).toString(),
+    });
+
     clear();
   }
 }
-
-// function handleSubmit(event: Event) {
-//   const form = event.target as HTMLFormElement;
-//   const formData = new FormData(form);
-//   let obj: ContactForm = {
-//     name: name.value,
-//     email: email.value,
-//     message: formData.get("message") as string,
-//   };
-
-//   console.log(obj);
-
-// fetch("/", {
-//   method: "POST",
-//   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-//   body: new URLSearchParams(JSON.stringify(obj)).toString(),
-// });
-// }
 </script>
 
 <style scoped></style>
