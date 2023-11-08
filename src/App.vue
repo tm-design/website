@@ -6,20 +6,29 @@ import AnimatedBackground from "./components/AnimatedBackground.vue";
 <template>
   <header>
     <div class="wrapper">
-      <div id="title">Tim Mudd
+      <div id="title">
+        Tim Mudd
         <div class="socials">
           <a class="no-hover" href="https://github.com/tm-design">
-            <img class="social-link" src="@/assets/github-mark-white.png" alt="Github Logo">
+            <img
+              class="social-link"
+              src="@/assets/github-mark-white.png"
+              alt="Github Logo"
+            />
           </a>
           <a class="no-hover" href="https://www.linkedin.com/in/tim-mudd/">
-            <img class="social-link" src="@/assets/LI-In-Bug.png" alt="LinkedIn Logo">
+            <img
+              class="social-link"
+              src="@/assets/LI-In-Bug.png"
+              alt="LinkedIn Logo"
+            />
           </a>
         </div>
       </div>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">Experience</RouterLink>
-        <a href="mailto:timmudd.dev@gmail.com">Email</a>
+        <RouterLink to="/contact">Contact</RouterLink>
       </nav>
     </div>
   </header>
@@ -84,12 +93,12 @@ a,
 .socials
   display: flex
   margin-left: 30px
-  .social-link 
+  .social-link
     max-height: 27px
     margin-right: 15px
     filter: saturate(0) contrast(0)  brightness(2.2)
-      
-  
+
+
 
 @media (hover: hover)
   a:hover:not(.no-hover)
