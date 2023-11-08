@@ -1,5 +1,6 @@
 <template>
   <v-form
+    name="contact-me"
     @submit.prevent="submit"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
@@ -13,11 +14,12 @@
       <v-row>
         <v-col cols="12" md="4">
           <v-text-field
+            name="name"
             v-model="state.name"
             :error-messages="
               vuelidate.name.$errors.map((e) => e.$message).toString()
             "
-            label="First name"
+            label="Name"
             required
             @input="vuelidate.name.$touch"
             @blur="vuelidate.name.$touch"
@@ -25,6 +27,7 @@
         </v-col>
         <v-col cols="12" md="4">
           <v-text-field
+            name="email"
             v-model="state.email"
             :error-messages="
               vuelidate.email.$errors.map((e) => e.$message).toString()
@@ -37,6 +40,7 @@
         </v-col>
         <v-col cols="12" md="8">
           <v-textarea
+            name="message"
             v-model="state.message"
             :error-messages="
               vuelidate.message.$errors.map((e) => e.$message).toString()
@@ -59,6 +63,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import axios from "axios";
 import { useVuelidate } from "@vuelidate/core";
 import { email, required } from "@vuelidate/validators";
 
@@ -87,21 +92,25 @@ function clear() {
   };
 }
 
+function encode(data: { [key: string]: string }) {
+  return Object.keys(data)
+    .map(
+      (key, value) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+    )
+    .join("&");
+}
+
 function submit() {
   vuelidate.value.$touch();
   if (!vuelidate.value.$error) {
-    let obj = {
-      name: state.value.name,
-      email: state.value.email,
-      message: state.value.message,
-    };
-
-    fetch("/", {
-      method: "POST",
+    const config = {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(JSON.stringify(obj)).toString(),
-    });
-
+    };
+    axios.post(
+      "/",
+      encode({ "form-name": "contact-me", ...state.value }),
+      config
+    );
     clear();
   }
 }
