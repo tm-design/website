@@ -1,5 +1,5 @@
 <template>
-  <v-form
+  <form
     name="contact-me"
     @submit.prevent="submit"
     data-netlify="true"
@@ -58,7 +58,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-form>
+  </form>
 </template>
 
 <script setup lang="ts">
