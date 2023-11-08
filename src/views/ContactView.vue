@@ -1,5 +1,14 @@
 <template>
-  <v-form @submit.prevent="submit" data-netlify="true">
+  <v-form
+    @submit.prevent="submit"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+  >
+    <p class="hidden">
+      <label>
+        Don't fill this out if you're human: <input name="bot-field" />
+      </label>
+    </p>
     <v-container>
       <v-row>
         <v-col cols="12" md="4">
@@ -98,4 +107,9 @@ function submit() {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.hidden {
+  display: none;
+  opacity: 0;
+}
+</style>
