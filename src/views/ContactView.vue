@@ -94,9 +94,7 @@ function clear() {
 
 function encode(data: { [key: string]: string }) {
   return Object.keys(data)
-    .map(
-      (key, value) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
-    )
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
     .join("&");
 }
 
