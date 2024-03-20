@@ -28,6 +28,7 @@ import AnimatedBackground from "./components/AnimatedBackground.vue";
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">Experience</RouterLink>
+        <RouterLink to="/projects">Projects</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
       </nav>
     </div>
