@@ -1,5 +1,0 @@
-[[redirects]]
-from = "/app-test/*"
-to = "https://tm-app-test-a36de5.netlify.app/:splat"
-status = 200
-force = false
